@@ -100,5 +100,3 @@ GET /:postal_code
     }
 }
 ```
-
-## POST /:postal_code
