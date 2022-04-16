@@ -17,11 +17,6 @@ If you do a `GET` request to this endpoint, you'll receive a JSON response with 
             "description": "Retrieve information about Norwegian postal codes, municipalities, counties and cities.",
             "name": "Postal Code API (Norway)",
             "path": "/postal-codes"
-        },
-        {
-            "description": "Retrieve the elevation of any given coordinate in Norway.",
-            "name": "Elevation API (Norway)",
-            "path": "/elevation"
         }
     ]
 }
