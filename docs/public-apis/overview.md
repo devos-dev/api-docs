@@ -11,7 +11,7 @@ If you do a `GET` request to this endpoint, you'll receive a JSON response with 
 ```json
 {
     "_message": "Welcome to the Devos Public API. For more information about this API, please see the attached URL.",
-    "_url": "https://devos.no/api/",
+    "_url": "https://api-docs.devos.no/docs/public-apis",
     "apis": [
         {
             "description": "Retrieve information about Norwegian postal codes, municipalities, counties and cities.",
