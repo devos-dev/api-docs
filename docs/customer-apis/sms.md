@@ -18,6 +18,9 @@ https://api.devos.no/v1
 ### Sender names
 Only whitelisted sender names can be used in the `from` field. [Contact us](https://devos.no/kontakt) to get a new sender name whitelisted.
 
+### Scheduling messages
+If you'd like to schedule an SMS for later, you can provide the `send_at` key with an ISO-8601 formatted date and time string, ie. `2022-04-17T19:00:00Z`. The SMS will have the status `scheduled` until it has been sent.
+
 ### Status callback
 If you'd like to be notified whenever the status of the SMS changes, you can provide a `status_callback` field when creating the SMS. The provided URL will receive a `POST` request with the body of the message when the status changes.
 
@@ -30,7 +33,8 @@ POST /sms
     "from": "SenderName",
     "to": "+4799998888",
     "body": "Message goes here.",
-    "status_callback": null || "https://example.com/sms/callback"
+    "status_callback": null || "https://example.com/sms/callback",
+    "send_at": null || "2022-04-17T19:00:00Z"
   }
 }
 ```
@@ -63,5 +67,50 @@ If something goes wrong, you'll get an appropriate status code and a body with t
 ```json
 {
     "error": "A 'To' phone number is required."
+}
+```
+
+### Get all SMS-es
+```json
+GET /sms
+
+[
+  {
+    "body": "This is a message",
+    "from": "SenderName",
+    "id": "2831340e-0b9c-422e-bd13-98df2655852e",
+    "inserted_at": "2022-04-17T13:30:32",
+    "status": "accepted",
+    "status_callback": null,
+    "to": "+4799998888",
+    "updated_at": "2022-04-17T13:30:32"
+  },
+  {
+    "body": "This is a message",
+    "from": "SenderName",
+    "id": "2831340e-0b9c-422e-bd13-98df2655852e",
+    "inserted_at": "2022-04-17T13:30:32",
+    "status": "accepted",
+    "status_callback": null,
+    "to": "+4799998888",
+    "updated_at": "2022-04-17T13:30:32"
+  },
+  ...
+]
+```
+
+### Get a single SMS
+```json
+GET /sms/:id
+
+{
+  "body": "This is a message",
+  "from": "SenderName",
+  "id": "2831340e-0b9c-422e-bd13-98df2655852e",
+  "inserted_at": "2022-04-17T13:30:32",
+  "status": "accepted",
+  "status_callback": null,
+  "to": "+4799998888",
+  "updated_at": "2022-04-17T13:30:32"
 }
 ```
