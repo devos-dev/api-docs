@@ -1,10 +1,12 @@
 # SMS
 Devos provides customers with an API for sending and receiving SMS messages.
 
-> These API endpoints requires authentication. If you're a customer of Devos and haven't got an API key, please [reach out](https://devos.no/kontakt).
+:::info
 
-## Authentication
-Use the standard `Authorization: Bearer $API_KEY` header to authenticate.
+This API requires authentication. Please refer to the [Authentication](./overview#Authentication) section of the [Overview](./overview) page for more information.
+
+:::
+
 
 ## Base URL
 All these requests have the following base URL:
@@ -44,13 +46,14 @@ If all goes well, you'll get a `201 Created` response with the following body:
 
 ```json
 {
-    "body": "Message goes here",
-    "from": "Sender Name",
-    "id": "9d7766cb-a3f9-4155-86e9-6153a0c00957",
-    "inserted_at": "2022-04-17T12:57:43",
-    "status": "accepted",
-    "to": "+4799998888",
-    "updated_at": "2022-04-17T12:57:43"
+  "body": "Message goes here",
+  "from": "Sender Name",
+  "id": "9d7766cb-a3f9-4155-86e9-6153a0c00957",
+  "inserted_at": "2022-04-17T12:57:43",
+  "status": "accepted",
+  "status_callback": null,
+  "to": "+4799998888",
+  "updated_at": "2022-04-17T12:57:43"
 }
 ```
 
@@ -66,11 +69,11 @@ If something goes wrong, you'll get an appropriate status code and a body with t
 #### 400 Bad Request
 ```json
 {
-    "error": "A 'To' phone number is required."
+  "error": "A 'To' phone number is required."
 }
 ```
 
-### Get all SMS-es
+## Get all SMS-es
 ```json
 GET /sms
 
@@ -99,7 +102,7 @@ GET /sms
 ]
 ```
 
-### Get a single SMS
+## Get a single SMS
 ```json
 GET /sms/:id
 
